@@ -69,21 +69,17 @@ export default function Portfolio() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              Anyer M.
+              Anyer Moreno
             </motion.h1>
             <div className="flex gap-6">
               {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
-                <button
+                <a
                   key={item}
-                  onClick={() => setActiveSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-colors ${
-                    activeSection === item.toLowerCase()
-                      ? "text-cyan-400"
-                      : "text-gray-300 hover:text-white"
-                  }`}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm font-medium text-gray-300 hover:text-cyan-400 transition-colors"
                 >
                   {item}
-                </button>
+                </a>
               ))}
             </div>
           </div>
