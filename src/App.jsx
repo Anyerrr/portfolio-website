@@ -18,15 +18,23 @@ export default function Portfolio() {
     }
   };
 
-  const skills = [
-    { name: "C# / .NET", level: 90 },
-    { name: "JavaScript", level: 85 },
-    { name: "SQL", level: 85 },
-    { name: "Python", level: 80 },
-    { name: "C / C++", level: 75 },
-    { name: "React", level: 75 },
-    { name: "Java", level: 70 },
-    { name: "AWS", level: 65 },
+  const skillCategories = [
+    {
+      title: "Backend & Systems",
+      skills: ["C#", ".NET", "SQL Server", "LINQ", "C/C++", "Java", "Python"]
+    },
+    {
+      title: "Development & Ops",
+      skills: ["Git", "CI/CD", "AWS", "REST APIs", "Unit Testing", "Docker", "Postman"]
+    },
+    {
+      title: "Frontend & Creative",
+      skills: ["JavaScript", "React", "Tailwind CSS", "Unity", "Android Studio", "Django", "Ruby on Rails"]
+    },
+    {
+      title: "Engineering Practices",
+      skills: ["Agile/Scrum", "Clean Code", "Design Patterns", "SQL Optimization", "System Design"]
+    }
   ];
 
   const projects = [
@@ -294,43 +302,37 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeInUp}>
             <h2 className="text-4xl font-bold mb-12 text-center text-white">
-              Technical Skills
+              Technical Expertise
             </h2>
-            <motion.div 
-              className="grid md:grid-cols-2 gap-8"
-              variants={stagger}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              {skills.map((skill, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {skillCategories.map((category, index) => (
                 <motion.div
-                  key={skill.name}
-                  variants={fadeInUp}
-                  className="bg-slate-800/50 rounded-xl p-6 backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition-all"
+                  key={category.title}
+                  className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700 hover:border-cyan-500/50 transition-all shadow-xl backdrop-blur-sm"
+                  whileHover={{ y: -5 }}
                 >
-                  <div className="flex justify-between mb-3">
-                    <span className="text-lg font-semibold text-white">{skill.name}</span>
-                    <span className="text-cyan-400">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    />
+                  <h3 className="text-cyan-400 font-bold mb-4 text-lg uppercase tracking-wider">
+                    {category.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span 
+                        key={skill}
+                        className="px-3 py-1 bg-slate-700/50 text-gray-200 rounded-md text-sm border border-slate-600"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
-
+                
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-slate-800/30">
+      {/* <section id="projects" className="py-20 px-6 bg-slate-800/30">
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeInUp}>
             <h2 className="text-4xl font-bold mb-12 text-center text-white">
@@ -367,7 +369,7 @@ export default function Portfolio() {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6">
